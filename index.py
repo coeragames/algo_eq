@@ -26,9 +26,21 @@ def trd(a, b, c, d):
     a_roots = sed(nv_a, nv_b, nv_c)
     
     return root, a_roots
+
+def bic(a, b, c):
+    roots = sed(a,b,c)
+    n_roots = []
+    for root in roots:
+        if(root>=0):
+            n_roots.extend([sqrt(root), -sqrt(root)])
+    
+    if(n_roots == []):
+        return "Pas de solution à cette équation"
+    
+    return n_roots       
     
 try:
-    n = int(input("degré (2 ou 3) :\n"))
+    n = int(input("degré (2 ou 3 ou 4 (bicarré)) :\n"))
     a = float(input("a :\n"))
     b = float(input("b :\n"))
     c = float(input("c :\n"))
@@ -38,6 +50,8 @@ try:
     elif n == 3:
         d = float(input("d :\n"))
         print("Solution(s): ",trd(a, b, c, d))
+    elif n == 4:
+        print("Solution(s): ",bic(a, b, c))
     else:
         print("Degré non valide")
 except:
